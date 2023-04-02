@@ -6,21 +6,33 @@
   </head>
   <body>
     <h1>EMI Calculator</h1>
-    <div class="form-container">
-      <form>
+    <form id="emi-form">
+      <div class="form-group">
         <label for="loan-amount">Loan Amount:</label>
         <input type="number" id="loan-amount" placeholder="Enter loan amount" />
-        <br />
+      </div>
+      <div class="form-group">
         <label for="annual-interest-rate">Annual Interest Rate:</label>
         <input type="text" id="annual-interest-rate" placeholder="Enter interest rate" />
-        <br />
+      </div>
+      <div class="form-group">
         <label for="tenure">Tenure (in months):</label>
         <input type="number" id="tenure" placeholder="Enter tenure" />
-        <br />
-        <button type="button" id="calculate-button">Calculate</button>
-      </form>
-    </div>
-    <div id="result"></div>
+      </div>
+      <div class="form-group">
+        <label for="total-interest">Total Interest to be Paid:</label>
+        <span id="total-interest"></span>
+      </div>
+      <div class="form-group">
+        <label for="total-payment">Total Payment:</label>
+        <span id="total-payment"></span>
+      </div>
+      <div class="form-group">
+        <label for="emi">EMI per Month:</label>
+        <span id="emi"></span>
+      </div>
+      <button type="submit" class="submit-button">Calculate EMI</button>
+    </form>
     <script src="script.js"></script>
   </body>
 </html>

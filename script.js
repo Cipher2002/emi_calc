@@ -1,32 +1,38 @@
-// DOM elements
-const loanAmountInput = document.getElementById('loan-amount');
-const annualInterestRateInput = document.getElementById('annual-interest-rate');
-const tenureInput = document.getElementById('tenure');
-const calculateButton = document.getElementById('calculate-button');
-const resultDiv = document.getElementById('result');
+const loanAmount = document.getElementById('loan-amount');
+const annualInterestRate = document.getElementById('annual-interest-rate');
+const tenure = document.getElementById('tenure');
+const totalInterest = document.getElementById('total-interest');
+const totalPayment = document.getElementById('total-payment');
+const emi = document.getElementById('emi');
+const submitBtn = document.getElementById('submit-btn');
 
-// Calculate EMI function
-function calculateEMI() {
-  const loanAmount = Number(loanAmountInput.value);
-  const annualInterestRate = Number(annualInterestRateInput.value);
-  const monthlyInterestRate = annualInterestRate / 12 / 100;
-  const tenure = Number(tenureInput.value);
-  const emi =
-    (loanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, tenure)) /
-    (Math.pow(1 + monthlyInterestRate, tenure) - 1);
-  const totalPayment = emi * tenure;
-  const totalInterest = totalPayment - loanAmount;
-  resultDiv.innerHTML = `
-    <label>Total Interest to be Paid:</label>
-    <span>${totalInterest.toFixed(2)}</span>
-    <br />
-    <label>Total Payment:</label>
-    <span>${totalPayment.toFixed(2)}</span>
-    <br />
-    <label>EMI per Month:</label>
-    <span>${emi.toFixed(2)}</span>
-  `;
+function calculateEmi() {
+  const p = parseFloat(loanAmount.value);
+  const r = parseFloat(annualInterestRate.value) / 100 / 12;
+  const n = parseFloat(tenure.value);
+  const emiValue = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+
+  if (isFinite(emiValue)) {
+    emi.innerHTML = emiValue.toFixed(2);
+    totalPayment.innerHTML = (emiValue * n).toFixed(2);
+    totalInterest.innerHTML = ((emiValue * n) - p).toFixed(2);
+  } else {
+    emi.innerHTML = '';
+    totalPayment.innerHTML = '';
+    totalInterest.innerHTML = '';
+  }
 }
 
-// Event listener for calculate button click
-calculateButton.addEventListener('click', calculateEMI);
+submitBtn.addEventListener('mouseover', function() {
+  this.style.backgroundColor = "#FDB813";
+  this.style.color = "#fff";
+  this.style.border = "none";
+});
+
+submitBtn.addEventListener('mouseout', function() {
+  this.style.backgroundColor = "#fff";
+  this.style.color = "#000";
+  this.style.border = "2px solid #000";
+});
+
+submitBtn.addEventListener('click', calculateEmi);

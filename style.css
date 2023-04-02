@@ -1,76 +1,69 @@
-* {
-  box-sizing: border-box;
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
   margin: 0;
   padding: 0;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.container {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 40px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  width: 100%;
-}
-
 h1 {
   text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* Form styles */
+#emi-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin-bottom: 20px;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
+.form-group label {
+  flex-basis: 50%;
+  margin-right: 20px;
 }
 
-label {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-input[type="number"],
-input[type="text"] {
+.form-group input[type="number"],
+.form-group input[type="text"] {
+  flex-basis: 50%;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  margin-bottom: 15px;
-  font-size: 1.1rem;
 }
 
-input[type="number"]:focus,
-input[type="text"]:focus {
-  outline: none;
-  border-color: #1abc9c;
-}
-
+/* Button Style */
 button[type="submit"] {
-  background-color: #1abc9c;
-  color: #fff;
-  font-size: 1.2rem;
-  padding: 0.8rem 1.5rem;
+  background-color: #008CBA;
+  color: white;
   border: none;
-  border-radius: 0.3rem;
+  padding: 10px 20px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
 
 button[type="submit"]:hover {
-  background-color: #148f77;
+  background-color: #005F6B;
 }
 
-span {
-  font-size: 1.2rem;
+/* Result styles */
+#total-interest,
+#total-payment,
+#emi {
   font-weight: bold;
-  margin-bottom: 15px;
-  color: #333;
+  font-size: 20px;
+  color: #008CBA;
+  margin-left: 10px;
 }
